@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52166633648",
+    "project_id": "lockv01-6dc34",
+    "storage_bucket": "lockv01-6dc34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52166633648:android:5f0f96ac13530f7b04f375",
+        "android_client_info": {
+          "package_name": "com.example.lockv01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52166633648-n8jrh0ovso8an3g1beter1bvfu2skmvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNHQHbrPtkIT3T3MvvF565_93LyJTmavI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52166633648-n8jrh0ovso8an3g1beter1bvfu2skmvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
