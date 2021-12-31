@@ -33,6 +33,7 @@ public class SignInActivity extends AppCompatActivity {
         editTextPassword1 = findViewById(R.id.editTextPassword);
         errorView = findViewById(R.id.textView7);
 
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public void signinOnClick(View view) {
@@ -65,7 +66,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
                                             System.out.println("Email Verified : " + user.isEmailVerified());
-                                            Intent HomeActivity = new Intent(SignInActivity.this, MainActivity.class);
+                                            Intent HomeActivity = new Intent(SignInActivity.this, HomeActivity.class);
                                             setResult(RESULT_OK, null);
                                             startActivity(HomeActivity);
                                             SignInActivity.this.finish();
