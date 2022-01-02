@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,38 +26,40 @@ public class RVActivity extends AppCompatActivity
     boolean isLoading=false;
     String key =null;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_view);
+        setContentView(R.layout.floating_button);
         swipeRefreshLayout = findViewById(R.id.swip);
         recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        adapter= new RVAdapter(this);
+        adapter = new RVAdapter(this);
         recyclerView.setAdapter(adapter);
         dao = new DAOPassword();
         loadData();
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
-        {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy)
-            {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int totalItem = linearLayoutManager.getItemCount();
                 int lastVisible = linearLayoutManager.findLastCompletelyVisibleItemPosition();
-                if(totalItem< lastVisible+3)
-                {
-                    if(!isLoading)
-                    {
-                        isLoading=true;
+                if (totalItem < lastVisible + 3) {
+                    if (!isLoading) {
+                        isLoading = true;
                         loadData();
                     }
                 }
             }
         });
     }
+        public void addButton(View view) {
+        Intent intent = new Intent(RVActivity.this, AddPassword.class);
+        startActivity(intent);
+
+    }
+
+
 
     private void loadData()
     {

@@ -3,6 +3,7 @@ package com.example.lockv01;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -167,6 +168,8 @@ public class AddPassword extends AppCompatActivity{
                 dao.add(emp).addOnSuccessListener(suc ->
                 {
                     Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddPassword.this, RVActivity.class);
+                    startActivity(intent);
                 }).addOnFailureListener(er ->
                 {
                     Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
