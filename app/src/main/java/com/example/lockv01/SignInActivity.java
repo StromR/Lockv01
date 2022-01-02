@@ -66,7 +66,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
                                             System.out.println("Email Verified : " + user.isEmailVerified());
-                                            Intent HomeActivity = new Intent(SignInActivity.this, HomeActivity.class);
+                                            Intent HomeActivity = new Intent(SignInActivity.this, AddPassword.class);
                                             setResult(RESULT_OK, null);
                                             startActivity(HomeActivity);
                                             SignInActivity.this.finish();
@@ -104,5 +104,12 @@ public class SignInActivity extends AppCompatActivity {
     public void signupTextClick(View view) {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(intent);
+    }
+
+    public void forgotpasswordTextClick(View view) {
+        Intent forgotPasswordActivity = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
+        startActivity(forgotPasswordActivity);
+        SignInActivity.this.finish();
+
     }
 }

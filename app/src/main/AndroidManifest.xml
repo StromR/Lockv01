@@ -24,6 +24,8 @@
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".AddPassword"></activity>
+        <activity android:name=".ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>
