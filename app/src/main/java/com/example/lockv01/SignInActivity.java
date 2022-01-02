@@ -74,7 +74,7 @@ public class SignInActivity extends AppCompatActivity {
 
                                         } else {
 
-                                            Toast.makeText(SignInActivity.this, "Please Verify your EmailID and SignIn.",
+                                            Toast.makeText(SignInActivity.this, "Please Verify your Email ID and SignIn.",
                                                     Toast.LENGTH_SHORT).show();
 
                                         }
