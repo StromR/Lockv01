@@ -48,18 +48,21 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
 
                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                                        ForgotPasswordActivity.this);
+
+                                        ForgotPasswordActivity.this,R.style.AlertDialogTheme);
 
                                 // set title
                                 alertDialogBuilder.setTitle("Reset Password");
 
                                 // set dialog message
                                 alertDialogBuilder
-                                        .setMessage("A Reset Password Link Is Sent To Your Registered EmailID")
+                                        .setMessage("A Reset Password Link Is Sent To Your Registered Email ID")
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
 
+                                                Intent intent = new Intent(ForgotPasswordActivity.this, SignInActivity.class);
+                                                startActivity(intent);
                                                 ForgotPasswordActivity.this.finish();
                                             }
                                         });

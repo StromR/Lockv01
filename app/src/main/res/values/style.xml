@@ -55,4 +55,10 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#F1F7ED</item>
+        <item name="android:dialogMessage">#F1F7ED</item>
+        <item name="colorAccent">#F1F7ED</item>
+    </style>
+
 </resources>
