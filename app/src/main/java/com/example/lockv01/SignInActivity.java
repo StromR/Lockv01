@@ -66,7 +66,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
                                             System.out.println("Email Verified : " + user.isEmailVerified());
-                                            Intent HomeActivity = new Intent(SignInActivity.this, AddPassword.class);
+                                            Intent HomeActivity = new Intent(SignInActivity.this, RVActivity.class);
                                             setResult(RESULT_OK, null);
                                             startActivity(HomeActivity);
                                             SignInActivity.this.finish();

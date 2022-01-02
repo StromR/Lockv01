@@ -26,6 +26,8 @@
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".AddPassword"></activity>
         <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".RVActivity"></activity>
+
     </application>
 
 </manifest>

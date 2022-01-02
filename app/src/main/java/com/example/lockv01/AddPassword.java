@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,8 @@ import androidx.core.app.ShareCompat;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,6 +26,8 @@ import butterknife.OnLongClick;
 
 public class AddPassword extends AppCompatActivity{
     private String GENERATED_PASSWORD_TAG = "GENERATED_PASSWORD";
+
+
 
 
     @BindView(R.id.password_result)
@@ -93,10 +99,36 @@ public class AddPassword extends AppCompatActivity{
         return true;
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(GENERATED_PASSWORD_TAG, passwordResult.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        passwordResult.setText(savedInstanceState.getString(GENERATED_PASSWORD_TAG));
+    }
+
+    private PasswordGenerator getPasswordGenerator() {
+        return new PasswordGenerator.Builder()
+                .useLower(lowerLettersSwitch.isChecked())
+                .useUpper(upperLettersSwitch.isChecked())
+                .useDigits(digitsSwitch.isChecked())
+                .usePunctuation(symbolsSwitch.isChecked())
+                .build();
+    }
+//------------------------
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_password);
+
         ButterKnife.bind(this);
 
         lengthTitle.setText(String.format(getResources().getString(R.string.length),
@@ -120,28 +152,42 @@ public class AddPassword extends AppCompatActivity{
         // Generate password automatically when app starts
         if (TextUtils.isEmpty(passwordResult.getText()))
             generatePassword();
-    }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        EditText edit_name = findViewById(R.id.editTextAppName);
+        EditText edit_position = findViewById(R.id.editTextUsername);
+        Button btn = findViewById(R.id.buttonSave);
 
-        outState.putString(GENERATED_PASSWORD_TAG, passwordResult.getText().toString());
-    }
+        DAOPassword dao =new DAOPassword();
+        Password emp_edit = (Password) getIntent().getSerializableExtra("EDIT");
+        btn.setOnClickListener(v->
+        {
+            Password emp = new Password(edit_name.getText().toString(), edit_position.getText().toString());
+            if(emp_edit==null)
+            {
+                dao.add(emp).addOnSuccessListener(suc ->
+                {
+                    Toast.makeText(this, "Record is inserted", Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(er ->
+                {
+                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+            else
+            {
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("password", edit_name.getText().toString());
+                hashMap.put("app", edit_position.getText().toString());
+                dao.update(emp_edit.getKey(), hashMap).addOnSuccessListener(suc ->
+                {
+                    Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();
+                    finish();
+                }).addOnFailureListener(er ->
+                {
+                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
 
-        passwordResult.setText(savedInstanceState.getString(GENERATED_PASSWORD_TAG));
-    }
-
-    private PasswordGenerator getPasswordGenerator() {
-        return new PasswordGenerator.Builder()
-                .useLower(lowerLettersSwitch.isChecked())
-                .useUpper(upperLettersSwitch.isChecked())
-                .useDigits(digitsSwitch.isChecked())
-                .usePunctuation(symbolsSwitch.isChecked())
-                .build();
     }
 }

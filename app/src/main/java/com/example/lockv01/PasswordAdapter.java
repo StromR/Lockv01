@@ -27,7 +27,6 @@ public class PasswordAdapter extends RecyclerView.Adapter<PasswordAdapter.Passwo
     @Override
     public void onBindViewHolder(PasswordViewHolder holder, int position) {
         holder.textApp.setText(dataList.get(position).getapp());
-        holder.textId.setText(dataList.get(position).getid());
         holder.textPassword.setText(dataList.get(position).getpassword());
     }
 

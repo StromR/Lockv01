@@ -19,9 +19,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_view);
 
-        addData();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+//        recyclerView = (RecyclerView) findViewById(R.id.textView7);
 
         adapter = new PasswordAdapter(passwordArrayList);
 
@@ -30,14 +29,6 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setAdapter(adapter);
-    }
-
-    void addData(){
-        passwordArrayList = new ArrayList<>();
-        passwordArrayList.add(new Password("Facebook", "haha@gmail.com", "123456789"));
-        passwordArrayList.add(new Password("Facebook", "1214234560", "987654321"));
-        passwordArrayList.add(new Password("Facebook", "1214230345", "987648765"));
-        passwordArrayList.add(new Password("Facebook", "1214378098", "098758124"));
     }
 
 }
