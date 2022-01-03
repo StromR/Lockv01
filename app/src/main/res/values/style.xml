@@ -61,4 +61,8 @@
         <item name="colorAccent">#F1F7ED</item>
     </style>
 
+    <style name="CustomCardview1" parent="CardView">
+        <item name="cardBackgroundColor">#B21D3557</item>
+    </style>
+
 </resources>
