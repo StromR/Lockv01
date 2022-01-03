@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -26,6 +27,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
         list.addAll(emp);
     }
+
 
     @NonNull
     @Override
@@ -57,8 +59,8 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 switch (item.getItemId())
                 {
                     case R.id.menu_edit:
-                        Intent intent=new Intent(context,AddPassword.class);
-                        intent.putExtra("EDIT", (Parcelable) emp);
+                        Intent intent=new Intent(context,EditPassword.class);
+                        intent.putExtra("EDIT", emp);
                         context.startActivity(intent);
                         break;
                     case R.id.menu_remove:

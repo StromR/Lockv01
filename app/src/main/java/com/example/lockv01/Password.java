@@ -1,6 +1,10 @@
 package com.example.lockv01;
 
-public class Password {
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+
+public class Password extends ArrayList<Parcelable> {
 
     private String app;
     private String username;
