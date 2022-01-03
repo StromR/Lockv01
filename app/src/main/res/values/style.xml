@@ -62,7 +62,7 @@
     </style>
 
     <style name="CustomCardview1" parent="CardView">
-        <item name="cardBackgroundColor">#B21D3557</item>
+        <item name="backgroundColor">#B21D3557</item>
     </style>
 
 </resources>
