@@ -45,8 +45,9 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
         PasswordVH vh = (PasswordVH) holder;
         Password emp = e==null? list.get(position):e;
-        vh.txt_name.setText(emp.getapp());
-        vh.txt_position.setText(emp.getpassword());
+        vh.txt_app.setText(emp.getapp());
+        vh.txt_username.setText(emp.getusername());
+        vh.txt_password.setText(emp.getpassword());
         vh.txt_option.setOnClickListener(v->
         {
             PopupMenu popupMenu =new PopupMenu(context,vh.txt_option);

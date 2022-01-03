@@ -3,14 +3,15 @@ package com.example.lockv01;
 public class Password {
 
     private String app;
+    private String username;
     private String password;
     public Password(){};
     private String key;
 
-    public Password(String app, String password) {
+    public Password(String app, String username, String password) {
         this.app = app;
+        this.username = username;
         this.password = password;
-
     }
 
 
@@ -20,6 +21,14 @@ public class Password {
 
     public void setapp(String app) {
         this.app = app;
+    }
+
+    public String getusername() {
+        return username;
+    }
+
+    public void setusername(String username) {
+        this.username = username;
     }
 
     public String getpassword() {

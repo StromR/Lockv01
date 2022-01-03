@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +28,6 @@ import butterknife.OnLongClick;
 
 public class AddPassword extends AppCompatActivity{
     private String GENERATED_PASSWORD_TAG = "GENERATED_PASSWORD";
-
-
-
 
     @BindView(R.id.password_result)
     AppCompatTextView passwordResult;
@@ -154,15 +152,16 @@ public class AddPassword extends AppCompatActivity{
         if (TextUtils.isEmpty(passwordResult.getText()))
             generatePassword();
 
-        EditText edit_name = findViewById(R.id.editTextAppName);
-        EditText edit_position = findViewById(R.id.editTextUsername);
+        EditText edit_app = findViewById(R.id.editTextAppName);
+        EditText edit_username = findViewById(R.id.editTextUsername);
+        TextView tv_password = findViewById(R.id.password_result);
         Button btn = findViewById(R.id.buttonSave);
 
         DAOPassword dao =new DAOPassword();
         Password emp_edit = (Password) getIntent().getSerializableExtra("EDIT");
         btn.setOnClickListener(v->
         {
-            Password emp = new Password(edit_name.getText().toString(), edit_position.getText().toString());
+            Password emp = new Password(edit_app.getText().toString(), edit_username.getText().toString(), tv_password.getText().toString());
             if(emp_edit==null)
             {
                 dao.add(emp).addOnSuccessListener(suc ->
@@ -178,8 +177,9 @@ public class AddPassword extends AppCompatActivity{
             else
             {
                 HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("password", edit_name.getText().toString());
-                hashMap.put("app", edit_position.getText().toString());
+                hashMap.put("app", edit_app.getText().toString());
+                hashMap.put("username", edit_username.getText().toString());
+                hashMap.put("password", tv_password.getText().toString());
                 dao.update(emp_edit.getKey(), hashMap).addOnSuccessListener(suc ->
                 {
                     Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();

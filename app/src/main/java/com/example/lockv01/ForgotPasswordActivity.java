@@ -60,7 +60,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
-
                                                 Intent intent = new Intent(ForgotPasswordActivity.this, SignInActivity.class);
                                                 startActivity(intent);
                                                 ForgotPasswordActivity.this.finish();
@@ -70,10 +69,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                 AlertDialog alertDialog = alertDialogBuilder.create();
                                 alertDialog.show();
 
-
                             }
                         });
-
 
             }
         });

@@ -100,7 +100,6 @@ public class SignInActivity extends AppCompatActivity {
 
         };
 
-
     public void signupTextClick(View view) {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(intent);

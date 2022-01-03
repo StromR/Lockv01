@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PasswordVH extends RecyclerView.ViewHolder
 {
-    public TextView txt_name,txt_position,txt_option;
+    public TextView txt_app,txt_username, txt_password,txt_option;
     public PasswordVH(@NonNull View itemView)
     {
         super(itemView);
-        txt_name = itemView.findViewById(R.id.txt_name);
-        txt_position = itemView.findViewById(R.id.txt_position);
+        txt_app = itemView.findViewById(R.id.txt_app);
+        txt_username = itemView.findViewById(R.id.txt_username);
+        txt_password = itemView.findViewById(R.id.txt_password);
         txt_option = itemView.findViewById(R.id.txt_option);
     }
 }
