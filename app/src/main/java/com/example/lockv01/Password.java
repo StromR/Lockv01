@@ -2,10 +2,14 @@ package com.example.lockv01;
 
 import android.os.Parcelable;
 
+import com.google.firebase.database.Exclude;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Password extends ArrayList<Parcelable> {
+public class Password implements Serializable {
 
+    @Exclude
     private String app;
     private String username;
     private String password;

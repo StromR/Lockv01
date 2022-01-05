@@ -159,25 +159,20 @@ public class EditPassword extends AppCompatActivity{
 
         DAOPassword dao =new DAOPassword();
         Password emp_edit = (Password) getIntent().getSerializableExtra("EDIT");
-        edit_app.setText(emp_edit.getapp());
-        edit_username.setText(emp_edit.getusername());
-        tv_password.setText(emp_edit.getpassword());
+
+        if(emp_edit !=null)
+        {
+            edit_app.setText(emp_edit.getapp());
+            edit_username.setText(emp_edit.getusername());
+            tv_password.setText(emp_edit.getpassword());
+        }
+        else
+        {
+            btn.setText("SUBMIT");
+        }
         btn.setOnClickListener(v->
         {
-            Password emp = new Password(edit_app.getText().toString(), edit_username.getText().toString(), tv_password.getText().toString());
             if(emp_edit!=null)
-            {
-                dao.add(emp).addOnSuccessListener(suc ->
-                {
-                    Toast.makeText(this, "Record is updated", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(EditPassword.this, RVActivity.class);
-                    startActivity(intent);
-                }).addOnFailureListener(er ->
-                {
-                    Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
-                });
-            }
-            else
             {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put("app", edit_app.getText().toString());
@@ -191,6 +186,10 @@ public class EditPassword extends AppCompatActivity{
                 {
                     Toast.makeText(this, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+            }
+            else
+            {
+                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
             }
         });
 
