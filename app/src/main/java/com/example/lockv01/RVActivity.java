@@ -80,7 +80,7 @@ public class RVActivity extends AppCompatActivity
                 }
                 adapter.setItems(emps);
                 adapter.notifyDataSetChanged();
-                isLoading =false;
+                isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }
 

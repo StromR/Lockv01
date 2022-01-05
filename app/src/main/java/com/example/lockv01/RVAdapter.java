@@ -1,5 +1,7 @@
 package com.example.lockv01;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -13,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.Serializable;
+import java.security.AccessController;
 import java.util.ArrayList;
 
 public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -50,6 +53,12 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         vh.txt_app.setText(emp.getapp());
         vh.txt_username.setText(emp.getusername());
         vh.txt_password.setText(emp.getpassword());
+        vh.txt_password.setOnClickListener(v -> {
+            ClipboardManager myClipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData myClip = ClipData.newPlainText("label", ((PasswordVH) holder).txt_password.getText().toString());
+            myClipboard.setPrimaryClip(myClip);
+            Toast.makeText(v.getContext(), "Copied to clipboard" , Toast.LENGTH_SHORT).show();
+        });
         vh.txt_option.setOnClickListener(v->
         {
             PopupMenu popupMenu =new PopupMenu(context,vh.txt_option);
