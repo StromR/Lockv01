@@ -68,7 +68,12 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 switch (item.getItemId())
                 {
                     case R.id.menu_show:
-                        vh.txt_password.setText(emp.getpassword());
+                        String password = vh.txt_password.getText().toString();
+                        if(password =="***********"){
+                        vh.txt_password.setText(emp.getpassword());}
+                        else{
+                            vh.txt_password.setText("***********");
+                        }
                         break;
                     case R.id.menu_edit:
                         Intent intent=new Intent(context,EditPassword.class);
