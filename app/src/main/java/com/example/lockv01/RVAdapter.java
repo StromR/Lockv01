@@ -53,7 +53,8 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         vh.txt_app.setText(emp.getapp());
         vh.txt_username.setText(emp.getusername());
         vh.txt_password.setText("***********");
-        vh.txt_password.setOnClickListener(v -> {
+        vh.txt_password.setOnClickListener(v ->
+        {
             ClipboardManager myClipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData myClip = ClipData.newPlainText("label", ((PasswordVH) holder).txt_password.getText().toString());
             myClipboard.setPrimaryClip(myClip);
