@@ -52,7 +52,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Password emp = e==null? list.get(position):e;
         vh.txt_app.setText(emp.getapp());
         vh.txt_username.setText(emp.getusername());
-        vh.txt_password.setText(emp.getpassword());
+        vh.txt_password.setText("***********");
         vh.txt_password.setOnClickListener(v -> {
             ClipboardManager myClipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData myClip = ClipData.newPlainText("label", ((PasswordVH) holder).txt_password.getText().toString());
@@ -67,6 +67,9 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             {
                 switch (item.getItemId())
                 {
+                    case R.id.menu_show:
+                        vh.txt_password.setText(emp.getpassword());
+                        break;
                     case R.id.menu_edit:
                         Intent intent=new Intent(context,EditPassword.class);
                         intent.putExtra("EDIT", emp);
@@ -83,7 +86,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         {
                             Toast.makeText(context, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
                         });
-
                         break;
                 }
                 return false;
