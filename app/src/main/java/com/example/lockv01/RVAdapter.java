@@ -4,11 +4,13 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -58,7 +60,14 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ClipboardManager myClipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData myClip = ClipData.newPlainText("label", ((PasswordVH) holder).txt_password.getText().toString());
             myClipboard.setPrimaryClip(myClip);
-            Toast.makeText(v.getContext(), "Copied to clipboard" , Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(v.getContext(), "Copied to clipboard" , Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = (TextView) view.findViewById(android.R.id.message);
+
+            //Shadow of the Of the Text Color
+            text.setBackgroundColor(Color.TRANSPARENT);
+            text.setTextColor(Color.parseColor("#1D3557"));
+            toast.show();
         });
         vh.txt_option.setOnClickListener(v->
         {
@@ -85,12 +94,26 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         DAOPassword dao=new DAOPassword();
                         dao.remove(emp.getKey()).addOnSuccessListener(suc->
                         {
-                            Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            TextView text = (TextView) view.findViewById(android.R.id.message);
+
+                            //Shadow of the Of the Text Color
+                            text.setBackgroundColor(Color.TRANSPARENT);
+                            text.setTextColor(Color.parseColor("#1D3557"));
+                            toast.show();
                             notifyItemRemoved(position);
                             list.remove(emp);
                         }).addOnFailureListener(er->
                         {
-                            Toast.makeText(context, ""+er.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(context, ""+er.getMessage(), Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            TextView text = (TextView) view.findViewById(android.R.id.message);
+
+                            //Shadow of the Of the Text Color
+                            text.setBackgroundColor(Color.TRANSPARENT);
+                            text.setTextColor(Color.parseColor("#1D3557"));
+                            toast.show();
                         });
                         break;
                 }

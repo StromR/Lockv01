@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:fontFamily="@font/sfregular"
+        android:onClick="forgotpasswordTextClick"
         android:text="Forgot Password?"
         android:textAllCaps="false"
         android:textColor="#BEC2C2"
@@ -67,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.848"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="forgotpasswordTextClick"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -135,10 +136,10 @@
         android:fontFamily="@font/roboto"
         android:textColor="#F1F7ED"
         app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.843" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

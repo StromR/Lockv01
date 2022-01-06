@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,8 +75,14 @@ public class SignInActivity extends AppCompatActivity {
 
                                         } else {
 
-                                            Toast.makeText(SignInActivity.this, "Please Verify your Email ID and SignIn.",
-                                                    Toast.LENGTH_SHORT).show();
+                                            Toast toast = Toast.makeText(SignInActivity.this, "Please Verify your Email ID and SignIn.", Toast.LENGTH_SHORT);
+                                            View view = toast.getView();
+                                            TextView text = (TextView) view.findViewById(android.R.id.message);
+
+                                            //Shadow of the Of the Text Color
+                                            text.setBackgroundColor(Color.TRANSPARENT);
+                                            text.setTextColor(Color.parseColor("#1D3557"));
+                                            toast.show();
 
                                         }
                                     }
@@ -83,8 +90,14 @@ public class SignInActivity extends AppCompatActivity {
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(SignInActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast toast = Toast.makeText(SignInActivity.this, "Authentication failed.", Toast.LENGTH_SHORT);
+                                    View view = toast.getView();
+                                    TextView text = (TextView) view.findViewById(android.R.id.message);
+
+                                    //Shadow of the Of the Text Color
+                                    text.setBackgroundColor(Color.TRANSPARENT);
+                                    text.setTextColor(Color.parseColor("#1D3557"));
+                                    toast.show();
                                     if (task.getException() != null) {
                                         errorView.setText(task.getException().getMessage());
                                     }

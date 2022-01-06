@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,13 +45,27 @@ public class SignUpActivity extends AppCompatActivity {
            if (editTextEmail .getText().toString().contentEquals("")) {
 
 
-                Toast.makeText(this, "Email can not be empty", Toast.LENGTH_LONG).show();
+               Toast toast = Toast.makeText(this, "Email can not be empty", Toast.LENGTH_LONG);
+               View view1 = toast.getView();
+               TextView text = (TextView) view1.findViewById(android.R.id.message);
+
+               //Shadow of the Of the Text Color
+               text.setBackgroundColor(Color.TRANSPARENT);
+               text.setTextColor(Color.parseColor("#1D3557"));
+               toast.show();
 
 
             } else if (editTextPassword.getText().toString().contentEquals("")) {
 
 
-                Toast.makeText(this, "Password can not be empty", Toast.LENGTH_LONG).show();
+               Toast toast = Toast.makeText(this, "Password can not be empty", Toast.LENGTH_LONG);
+               View view1 = toast.getView();
+               TextView text = (TextView) view1.findViewById(android.R.id.message);
+
+               //Shadow of the Of the Text Color
+               text.setBackgroundColor(Color.TRANSPARENT);
+               text.setTextColor(Color.parseColor("#1D3557"));
+               toast.show();
 
 
             }
@@ -110,8 +125,14 @@ public class SignUpActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            TextView text = (TextView) view.findViewById(android.R.id.message);
+
+                            //Shadow of the Of the Text Color
+                            text.setBackgroundColor(Color.TRANSPARENT);
+                            text.setTextColor(Color.parseColor("#1D3557"));
+                            toast.show();
 
                             if (task.getException() != null) {
                                 errorView.setText(task.getException().getMessage());
